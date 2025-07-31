@@ -5,11 +5,9 @@ class Company < ActiveRecord::Base
   def give_freebie(dev, item_name, value)
     Freebie.create(item_name: item_name, value: value, company_id: id, dev_id: dev.id )
   end
-    
-    # Company.oldest_company
-    #     returns the Company instance with the earliest founding year
 
-
-
+  def self.oldest_company
+    all.order(:founding_year).first
+  end
 
 end
